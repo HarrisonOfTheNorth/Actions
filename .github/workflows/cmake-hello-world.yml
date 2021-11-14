@@ -54,9 +54,9 @@ jobs:
           name: my-secret
           path: "CMake-Hello-World/tmp/${{ steps.date.outputs.date }}_hellosecret.txt"
       - name: Deploy
-        uses: s0/git-publish-subdir-action@develop
+        uses: s0/git-publish-subdir-action@develop # Uploads the given folder (tmp) to the given branch (cmake-hello-world) of this repo
         env:
           REPO: self
           BRANCH: cmake-hello-world # This branch has to already exist
-          FOLDER: CMake-Hello-World/tmp
+          FOLDER: CMake-Hello-World/tmp # This folder, and it's contents, were created above
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
