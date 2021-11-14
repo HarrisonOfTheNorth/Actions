@@ -102,6 +102,10 @@ jobs:
         run: (cd CMake-Hello-World/build/debug && ./MyProjectName) > CMake-Hello-World/helloworld.txt
       - name: tree
         run: tree
+      - name: Hello Secret
+	run: echo $HELLOSEC
+	env:
+	  HELLOSEC: ${{ secrets.HELLO_SECRET_KEY }}
       - uses: actions/upload-artifact@v2 # Uploads the path to the Action Build Output screen, with the name identified in name
         with:
           name: my-artifact
