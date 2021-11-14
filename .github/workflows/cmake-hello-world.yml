@@ -44,7 +44,7 @@ jobs:
       - uses: actions/upload-artifact@v2 # Uploads the path to the Action Build Output screen, with the name identified in name
         with:
           name: my-secret
-          path: CMake-Hello-World/hellosecret.txt
+          path: CMake-Hello-World/secret/hellosecret.txt
       - name: Deploy
         uses: s0/git-publish-subdir-action@develop
         env:
