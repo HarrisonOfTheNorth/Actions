@@ -120,3 +120,7 @@ Guess what the build output is:
 `Hello World!`
 
 _... exactly what main.cpp outputs!_
+
+- But wait, there's a bonus!
+
+If you look at the .yml file, you will see that we also commit a GitHub secret, in a text file, to another branch - [here](https://github.com/HarrisonOfTheNorth/Actions/tree/cmake-hello-world) it is! The secret is inside the file, click on it!
