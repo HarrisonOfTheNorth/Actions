@@ -26,10 +26,10 @@ jobs:
       - name: run executable
         run: (cd CMake-Hello-World/build/debug && ./MyProjectName)
       - name: Upload Artefact
-        run: echo hello > helloworld.txt
+        run: echo hello > CMake-Hello-World/helloworld.txt
       - name: tree
         run: tree
       - uses: actions/upload-artifact@v2
         with:
           name: my-artifact
-          path: helloworld.txt
+          path: CMake-Hello-World/helloworld.txt
