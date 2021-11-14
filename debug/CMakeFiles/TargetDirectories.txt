@@ -1,3 +1,0 @@
-/home/runner/work/Actions/Actions/CMake-Hello-World/build/debug/CMakeFiles/rebuild_cache.dir
-/home/runner/work/Actions/Actions/CMake-Hello-World/build/debug/CMakeFiles/edit_cache.dir
-/home/runner/work/Actions/Actions/CMake-Hello-World/build/debug/CMakeFiles/MyProjectName.dir
