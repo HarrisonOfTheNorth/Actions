@@ -30,7 +30,8 @@ jobs:
       - name: tree
         run: tree
       - name: Hello Secret
-        ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+        with:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
         run: |
           echo $HELLOSEC # merely echoes the stored secret, to show how it's done! Otherwise, not neccessary here!
           mkdir -p CMake-Hello-World/secret
