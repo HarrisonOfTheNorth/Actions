@@ -30,10 +30,16 @@ jobs:
       - name: tree
         run: tree
       - name: Hello Secret
-        run: echo $HELLOSEC # merely echoes the stored secret, to show how it's done! Otherwise, not neccessary here!
+        run: |
+          echo $HELLOSEC # merely echoes the stored secret, to show how it's done! Otherwise, not neccessary here!
+          ${{ secrets.HELLO_SECRET_KEY }} > CMake-Hello-World/hellosecret.txt
         env:
           HELLOSEC: ${{ secrets.HELLO_SECRET_KEY }}
       - uses: actions/upload-artifact@v2 # Uploads the path to the Action Build Output screen, with the name identified in name
         with:
           name: my-artifact
           path: CMake-Hello-World/helloworld.txt
+      - uses: actions/upload-artifact@v2 # Uploads the path to the Action Build Output screen, with the name identified in name
+        with:
+          name: my-secret
+          path: CMake-Hello-World/hellosecret.txt
