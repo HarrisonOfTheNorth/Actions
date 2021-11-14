@@ -36,7 +36,7 @@ jobs:
         run: |
           echo $HELLOSEC # merely echoes the stored secret, to show how it's done! Otherwise, not neccessary here!
           mkdir -p CMake-Hello-World/tmp
-          echo ${{ secrets.HELLO_SECRET_KEY }} > "CMake-Hello-World/secret/${{ steps.date.outputs.date }}_hellosecret.txt"
+          echo ${{ secrets.HELLO_SECRET_KEY }} > "CMake-Hello-World/tmp/${{ steps.date.outputs.date }}_hellosecret.txt"
           tree # list
         env:
           HELLOSEC: ${{ secrets.HELLO_SECRET_KEY }}
