@@ -64,6 +64,7 @@ add_executable(${PROJECT_NAME} main.cpp)
 ## Be a Monkey Prince
 
 - If you check your project into your own GitHub account, you can configure it to build, every time you commit - and it will report a success or failure!
+- We go the extra mile here by piping the output ('Hello World!) to a text file, which is then uploaded as an attachment to the (not publicly visible) job build page.
 
 ![example workflow](https://github.com/HarrisonOfTheNorth/CMake-Hello-World/actions/workflows/c-cpp.yml/badge.svg)
 
