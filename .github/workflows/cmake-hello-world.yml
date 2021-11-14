@@ -42,7 +42,7 @@ jobs:
           HELLOSEC: ${{ secrets.HELLO_SECRET_KEY }}
       - name: curl # the advantage of curl is that you can GET and POST and also add headers. We will just retrieve a simple GET
         run: |
-          curl https://www.google.com > "CMake-Hello-World/tmp/www.google.com.html"
+          curl https://www.google.com > "CMake-Hello-World/tmp/${{ steps.date.outputs.date }}www.google.com.html"
       - uses: actions/upload-artifact@v2 # Uploads the path to the Action Build Output screen, with the name identified in name
         with:
           name: my-artifact
