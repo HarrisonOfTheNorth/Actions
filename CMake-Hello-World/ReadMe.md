@@ -156,7 +156,7 @@ We have demonstrated the capacity to build an application in our own repo using 
 
 Thus, we have demonstrated the capability to create a program, to execute it, to interact with any webpage on the internet, with both GET and POST capabilty, including the prospect of sending headers - and to save the response in either a publicly or privately accessible artifact.
 
-All-in-all, we have proven that we are capable of using a GitHub Action to intract with any resource on the web, either using the Linux CLI, or using an executable of our own design.
+All-in-all, we have proven that we are capable of using a GitHub Action to interact with any resource on the web, either using the Linux CLI, or using an executable of our own design.
 
 ## Next Demo
 
