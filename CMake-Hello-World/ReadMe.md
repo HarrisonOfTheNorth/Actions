@@ -84,32 +84,55 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y%m%d%I%M%p')" # Used in a filename, later
       - name: Checkout repository content
         uses: actions/checkout@v2 # Checkout the repository content to github runner.
       - name: tree
-        run: tree
+        run: tree # render a filename tree of the checkout
       - name: cmake
-        run: cmake -S CMake-Hello-World/src -B CMake-Hello-World/build/debug
+        run: cmake -S CMake-Hello-World/src -B CMake-Hello-World/build/debug # Generates Makefile
       - name: tree
-        run: tree
+        run: tree # render a new filename tree to see the differences in what was generated from the previous tree
       - name: make
-        run: make -C CMake-Hello-World/build/debug
+        run: make -C CMake-Hello-World/build/debug # Runs Makefile
       - name: tree
-        run: tree
+        run: tree # render a new filename tree to see the differences in what was generated from the previous tree
       - name: run executable
-        run: (cd CMake-Hello-World/build/debug && ./MyProjectName)
+        run: (cd CMake-Hello-World/build/debug && ./MyProjectName) # Runs executable that Makefile generated
       - name: Upload Artefact
-        run: (cd CMake-Hello-World/build/debug && ./MyProjectName) > CMake-Hello-World/helloworld.txt
+        run: (cd CMake-Hello-World/build/debug && ./MyProjectName) > CMake-Hello-World/helloworld.txt # Creates text file with executable output in it
       - name: tree
-        run: tree
+        run: tree # render a new filename tree to see the differences in what was generated from the previous tree
       - name: Hello Secret
-	run: echo $HELLOSEC
-	env:
-	  HELLOSEC: ${{ secrets.HELLO_SECRET_KEY }}
+        run: |
+          echo $HELLOSEC # merely echoes the stored secret, then stores it in a file, to show how it's done! Otherwise, not neccessary here!
+          mkdir -p CMake-Hello-World/tmp
+          echo "The arbitrary GitHub secret that was retrieved from our account is: ${{ secrets.HELLO_SECRET_KEY }}" > "CMake-Hello-World/tmp/${{ steps.date.outputs.date }}_hellosecret.txt"
+          tree # list
+        env:
+          HELLOSEC: ${{ secrets.HELLO_SECRET_KEY }}
+      - name: curl # the advantage of curl is that you can GET and POST and also add headers. We will just retrieve a simple GET to show how it is done
+        run: |
+          curl https://www.google.com > "CMake-Hello-World/tmp/${{ steps.date.outputs.date }}_www.google.com.html"
+      - name: tree
+        run: tree # show a tree that has both the secret file and curl file
       - uses: actions/upload-artifact@v2 # Uploads the path to the Action Build Output screen, with the name identified in name
         with:
           name: my-artifact
           path: CMake-Hello-World/helloworld.txt
+      - uses: actions/upload-artifact@v2 # Uploads the path to the Action Build Output screen, with the name identified in name
+        with:
+          name: my-secret
+          path: "CMake-Hello-World/tmp/${{ steps.date.outputs.date }}_hellosecret.txt"
+      - name: Deploy
+        uses: s0/git-publish-subdir-action@develop # Uploads the given folder (tmp) to the given branch (cmake-hello-world) of this repo
+        env:
+          REPO: self
+          BRANCH: cmake-hello-world # This branch has to already exist
+          FOLDER: CMake-Hello-World/tmp # This folder, and it's contents, were created above
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 ```
 
