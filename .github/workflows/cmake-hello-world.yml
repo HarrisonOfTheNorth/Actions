@@ -33,11 +33,11 @@ jobs:
         run: |
           echo $HELLOSEC # merely echoes the stored secret, to show how it's done! Otherwise, not neccessary here!
           mkdir -p CMake-Hello-World/secret
-          echo ${{ secrets.HELLO_SECRET_KEY }} > "CMake-Hello-World/secret/$(date +"%Y_%m_%d_%I_%M_%p")_hellosecret.txt"
+          echo ${{ secrets.HELLO_SECRET_KEY }} > "CMake-Hello-World/secret/$(DATE_TIME)_hellosecret.txt"
           tree # list
         env:
           HELLOSEC: ${{ secrets.HELLO_SECRET_KEY }}
-          DATE_TIME: $(date +"%Y_%m_%d_%I_%M_%p")
+          DATE_TIME: "$(date +"%Y_%m_%d_%I_%M_%p").log"
       - uses: actions/upload-artifact@v2 # Uploads the path to the Action Build Output screen, with the name identified in name
         with:
           name: my-artifact
@@ -45,7 +45,7 @@ jobs:
       - uses: actions/upload-artifact@v2 # Uploads the path to the Action Build Output screen, with the name identified in name
         with:
           name: my-secret
-          path: "CMake-Hello-World/secret/$(date +"%Y_%m_%d_%I_%M_%p")_hellosecret.txt"
+          path: "CMake-Hello-World/secret/$(DATE_TIME)_hellosecret.txt"
       - name: Deploy
         uses: s0/git-publish-subdir-action@develop
         env:
