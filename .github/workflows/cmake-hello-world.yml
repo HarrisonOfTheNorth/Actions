@@ -44,6 +44,7 @@ jobs:
           path: CMake-Hello-World/helloworld.txt
       - uses: actions/upload-artifact@v2 # Uploads the path to the Action Build Output screen, with the name identified in name
         with:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
           name: my-secret
           path: CMake-Hello-World/secret/hellosecret$DATE_TIME.txt
       - name: Deploy
