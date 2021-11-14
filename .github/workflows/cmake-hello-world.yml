@@ -37,7 +37,7 @@ jobs:
           tree # list
         env:
           HELLOSEC: ${{ secrets.HELLO_SECRET_KEY }}
-          DATE_TIME: "$(date +"%Y_%m_%d_%I_%M_%p").log"
+          DATE_TIME: $(date +"%Y_%m_%d_%I_%M_%p").log
       - uses: actions/upload-artifact@v2 # Uploads the path to the Action Build Output screen, with the name identified in name
         with:
           name: my-artifact
