@@ -24,4 +24,4 @@ jobs:
       - name: tree
         run: tree
       - name: run executable
-        run: (cd CMake-Hello-World/build/debug && CMake-Hello-World/build/debug/MyProjectName)
+        run: (cd CMake-Hello-World/build/debug && ./MyProjectName)
