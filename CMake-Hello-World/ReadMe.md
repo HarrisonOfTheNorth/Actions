@@ -98,6 +98,15 @@ jobs:
         run: tree
       - name: run executable
         run: (cd CMake-Hello-World/build/debug && ./MyProjectName)
+      - name: Upload Artefact
+        run: (cd CMake-Hello-World/build/debug && ./MyProjectName) > CMake-Hello-World/helloworld.txt
+      - name: tree
+        run: tree
+      - uses: actions/upload-artifact@v2 # Uploads the path to the Action Build Output screen, with the name identified in name
+        with:
+          name: my-artifact
+          path: CMake-Hello-World/helloworld.txt
+
 ```
 
 I put extensive tree commands in so that I can look at the output file, when it does not build, to see where the problem occurred.
