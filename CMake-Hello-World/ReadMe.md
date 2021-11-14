@@ -124,3 +124,17 @@ _... exactly what main.cpp outputs!_
 - But wait, there's a bonus!
 
 If you look at the .yml file, you will see that we also commit a GitHub secret, in a text file, to another branch - [here](https://github.com/HarrisonOfTheNorth/Actions/tree/cmake-hello-world) it is! The secret is inside the file, click on it!
+
+And the icing on the cake is that we also retrieve an arbitrary webpage using curl (which is capable of both GET and POST as well as sending headers) and commit it with the above file, to the same other branch.
+
+## Conclusion
+
+We have demonstrated the capacity to build an application in our own repo using a GitHub Action, to execute it, to upload the output of the application to a privately accessible file, to also access a GitHub secret, to upload that to a file in a separate branch in the same repo so that it is publicly available, and to retrieve an arbitrary webpage from the internet, similarly saving the response of that.
+
+Thus, we have demonstrated the capability to create a program, to execute it, to interact with any webpage on the internet, with both GET and POST capabilty, including the prospect of sending headers - and to save the response in either a publicly or privately accessible artifact.
+
+All-in-all, we have proven that we are capable of using a GitHub Action to intract with any resource on the web, either using the Linux CLI, or using an executable of our own design.
+
+## Next Demo
+
+The trigger of these actions was a `git push` to a repo, and the natural next step would be to discover how to trigger an action periodically, saving the response to a branch that accrued each response instead of only displaying the last run.
