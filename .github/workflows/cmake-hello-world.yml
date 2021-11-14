@@ -2,27 +2,26 @@ name: C++ CMake-Hello-World Build
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository content
-        uses: actions/checkout@v2 # Checkout the repository content to github runner.    
+        uses: actions/checkout@v2 # Checkout the repository content to github runner.
       - name: tree
         run: tree
       - name: cmake
-        run: cmake -S . -B build/debug
+        run: cmake -S CMake-Hello-World/src -B CMake-Hello-World/build/debug
       - name: tree
         run: tree
       - name: make
-        run: make -C build/debug
+        run: make -C CMake-Hello-World/build/debug
       - name: tree
         run: tree
       - name: run executable
-        run: (cd build/debug && ./MyProjectName)
+        run: (cd CMake-Hello-World/build/debug && CMake-Hello-World/build/debug/MyProjectName)
